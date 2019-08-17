@@ -34,9 +34,6 @@
 		select id,name,money from account where name=#{name}
 	</select>
 
-	<select id="a" resultType="Money">
-	</select>
-
 
 	<!---插入数据-->
 	<insert id="insertUser"  parameterType="cn.xiangqiri.run.pojo.User">
