@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，唯一特性 -->
+<mapper namespace="cn.xiangqiri.run.mapper.UserMapper">
+
+    <resultMap id="Map" type="cn.xiangqiri.run.pojo.person">
+
+        <id column="id" property="id" jdbcType="INTEGER" javaType="Integer"></id>
+        <result column="age" property="age"></result>
+        <result column="name" property="name" ></result>
+    </resultMap>
+
+    <!--Map 结果集-->
+    <select id="getResultMap" resultType="Map">
+		select id,age,name from person
+	</select>
+
+
+
+    <select id="find" resultType="User">
+		select id,name,birthday,address,status from user
+	</select>
+
+
+	<insert id="update" >
+		update account set money=#{money} where name=#{name}
+
+	</insert>
+
+	<select id="getMoney" resultType="Money">
+		select id,name,money from account where name=#{name}
+	</select>
+
+
+	<!---插入数据-->
+	<insert id="insertUser"  parameterType="cn.xiangqiri.run.pojo.User">
+		INSERT INTO user (NAME,BIRTHDAY,ADDRESS) values (#{user.name},#{user.birthday},#{user.address})
+
+	</insert>
+
+	<!---删除数据-->
+	<delete id="deleteUser">
+		delete from user where id=#{id}
+
+	</delete>
+
+	<!---->
+	<update id="updateUser" parameterType="cn.xiangqiri.run.pojo.User">
+		update user set name=#{user.name},birthday=#{user.birthday},address=#{user.address}  where id=#{user.id}
+
+	</update>
+
+	<!--List对象查询数据-->
+	<select id="selectUser" resultType="user" parameterType="java.util.List">
+
+	select * from user
+	<where>
+		<if test="user !=null">
+			<foreach collection="user" index="index" item="item" open="("
+					  close=")" separator=",">
+				id=#{item.id} and status=#{item.status}
+
+			</foreach>
+
+		</if>
+	</where>
+
+
+	</select>
+
+
+	<!--List<Integer> 查询数据-->
+	<!--SELECT * FROM `user`  WHERE ID in(1,2)
+-->
+	<select id="selectUserInteger" resultType="user" parameterType="java.util.List">
+
+		select * from user
+		<where>
+					id
+					in
+			<foreach collection="list" index="index" item="item" open="("
+					 close=")" separator=",">
+
+					#{item}
+
+				</foreach>
+		</where>
+
+	</select>
+
+</mapper>
