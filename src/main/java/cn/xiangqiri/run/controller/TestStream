@@ -25,7 +25,7 @@ public class TestStream {
             return "stream().map()处理之后： "+string;
         }).collect(Collectors.toList());
 
-        list2.stream().forEach(a -> System.out.println("处理之后list2为 ："+ a));
+        list2.stream().forEach(a -> System.out.println("处理之后list2为 ："+ a)); 
 
-    }
+    } 
 }
