@@ -37,4 +37,10 @@ public interface UserMapper {
      List<User> selectUser(@Param("user") List<User> user);
 
     List<User> selectUsrInteger(@Param("list") List<Integer> list);
+
+
+    //使用pageHelper
+
+    List<User> getUserInfo();
+
 }

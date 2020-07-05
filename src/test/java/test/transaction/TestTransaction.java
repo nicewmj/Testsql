@@ -5,6 +5,8 @@ import cn.xiangqiri.run.mapper.UserMapper;
 import cn.xiangqiri.run.pojo.User;
 import cn.xiangqiri.run.pojo.person;
 import cn.xiangqiri.run.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -121,4 +123,21 @@ public class TestTransaction {
         System.out.println("查询成功------"+ resultMap);
     }
 
+
+    /**
+     *  使用 pageHepler 的分页
+     */
+    @Test
+    public void testselectUser(){
+        //Map 查询数据
+        PageHelper.startPage(1, 3);
+        List<User> userInfo = userMapper.getUserInfo();
+        PageInfo<User> pageInfo = new PageInfo<>(userInfo);
+
+        System.out.println("总记录数："+pageInfo.getTotal());
+        System.out.println("总页数："+pageInfo.getPages());
+        System.out.println("一页的大小："+pageInfo.getSize());
+
+        System.out.println("查询成功User------"+ userInfo);
+    }
 }

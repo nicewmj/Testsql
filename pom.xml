@@ -67,6 +67,13 @@
         </dependency>
 
 
+        <!--添加pageHelper分页-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.6</version>
+        </dependency>
+
 
         <!--测试使用的-->
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->

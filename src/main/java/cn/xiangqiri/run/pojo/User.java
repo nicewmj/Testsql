@@ -10,6 +10,8 @@ import java.util.Date;
 public class User {
     private Integer id;
     private String name;
+    private String pwd;
+    private String perms;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;
